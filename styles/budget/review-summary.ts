@@ -1,0 +1,136 @@
+import { StyleSheet } from 'react-native';
+
+import { budgetFlowColors, budgetFlowLayout } from '@/constants/budget-flow';
+import { fonts } from '@/constants/fonts';
+
+const {
+  reviewCardWidth,
+  reviewCardMinHeight,
+  reviewCardRadius,
+  reviewCardPadding,
+  reviewCardGap,
+  reviewProgressBarHeight,
+  reviewProgressLabelGap,
+  reviewCategoryPillHeight,
+  reviewAmountFontSize,
+} = budgetFlowLayout;
+
+export const budgetReviewSummaryStyles = StyleSheet.create({
+  cardShell: {
+    width: '100%',
+    maxWidth: reviewCardWidth,
+    alignSelf: 'center',
+    position: 'relative',
+    overflow: 'hidden',
+    borderRadius: reviewCardRadius,
+    backgroundColor: budgetFlowColors.reviewCardBg,
+  },
+  card: {
+    width: '100%',
+    minHeight: reviewCardMinHeight,
+    borderRadius: reviewCardRadius,
+    padding: reviewCardPadding,
+    gap: reviewCardGap,
+    overflow: 'hidden',
+    backgroundColor: budgetFlowColors.reviewCardBg,
+    position: 'relative',
+  },
+  topRow: {
+    zIndex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  title: {
+    flex: 1,
+    fontFamily: fonts.cabinBold,
+    fontSize: 16,
+    lineHeight: 25.6,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  periodPill: {
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    borderRadius: 50,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.45)',
+  },
+  periodText: {
+    fontFamily: fonts.cabin,
+    fontSize: 13,
+    lineHeight: 20.8,
+    color: '#FFFFFF',
+  },
+  categoryRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: 8,
+    minHeight: reviewCategoryPillHeight,
+    zIndex: 1,
+  },
+  moreText: {
+    fontFamily: fonts.cabin,
+    fontSize: 14,
+    lineHeight: 22.4,
+    color: '#FFFFFF',
+  },
+  amount: {
+    fontFamily: fonts.cabinBold,
+    fontSize: reviewAmountFontSize,
+    lineHeight: reviewAmountFontSize * 1.25,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    zIndex: 1,
+  },
+  progressSection: {
+    zIndex: 2,
+    width: '100%',
+    gap: reviewProgressLabelGap,
+  },
+  progressTrack: {
+    width: '100%',
+    height: reviewProgressBarHeight,
+    borderRadius: 50,
+    backgroundColor: 'rgba(242, 242, 242, 0.5)',
+  },
+  progressLabels: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  progressEdge: {
+    fontFamily: fonts.cabin,
+    fontSize: 12,
+    lineHeight: 19.2,
+    color: 'rgba(255, 255, 255, 0.75)',
+  },
+  thresholdPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    alignSelf: 'flex-start',
+    zIndex: 1,
+    minHeight: 37,
+    paddingVertical: 7,
+    paddingHorizontal: 12,
+    borderRadius: 50,
+    backgroundColor: '#FEFEF3',
+    borderWidth: 1,
+    borderColor: '#F2F2F2',
+  },
+  thresholdIcon: {
+    width: 18,
+    height: 18,
+  },
+  thresholdText: {
+    fontFamily: fonts.cabinBold,
+    fontSize: 14,
+    lineHeight: 22.4,
+    fontWeight: '700',
+    color: '#36994E',
+  },
+});
