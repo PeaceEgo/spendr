@@ -77,19 +77,21 @@ export default function OnboardingStep4() {
               onPress={() => setSelected(option.id)}
               style={[
                 styles.thresholdCard,
-                isSelected && styles.thresholdCardSelected,
+                isSelected && styles.cardSelected,
               ]}
             >
               <View style={styles.thresholdHeader}>
                 <View style={styles.thresholdHeadingRow}>
-                  <View style={styles.thresholdIconBox}>
+                  <View style={[styles.thresholdIconBox, isSelected && styles.iconBadgeSelected]}>
                     <Image
                       source={{ uri: NOTIFICATION_ICON }}
-                      style={styles.thresholdIconImage}
+                      style={[styles.thresholdIconImage, isSelected && styles.iconImageSelected]}
                       resizeMode="contain"
                     />
                   </View>
-                  <Text style={styles.thresholdTitle}>{option.title}</Text>
+                  <Text style={[styles.thresholdTitle, isSelected && styles.cardTitleSelected]}>
+                    {option.title}
+                  </Text>
                 </View>
                 <View style={[styles.badge, option.badgeStyle]}>
                   <Text style={[styles.badgeText, option.badgeTextStyle]}>
@@ -97,13 +99,19 @@ export default function OnboardingStep4() {
                   </Text>
                 </View>
               </View>
-              <Text style={styles.thresholdDesc}>{option.description}</Text>
+              <Text style={[styles.thresholdDesc, isSelected && styles.cardDescSelected]}>
+                {option.description}
+              </Text>
               <View style={styles.progressTrack}>
                 <View style={[styles.progressFill, option.fillStyle]} />
               </View>
               <View style={styles.progressLabelRow}>
-                <Text style={styles.progressLabel}>Alert fires here</Text>
-                <Text style={styles.progressLabel}>100%</Text>
+                <Text style={[styles.progressLabel, isSelected && styles.cardDescSelected]}>
+                  Alert fires here
+                </Text>
+                <Text style={[styles.progressLabel, isSelected && styles.cardDescSelected]}>
+                  100%
+                </Text>
               </View>
             </Pressable>
           );

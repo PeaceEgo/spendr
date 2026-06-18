@@ -10,7 +10,6 @@ import { formatNaira } from '@/utils/formatNaira';
 import { getInitials } from '@/utils/getInitials';
 
 const notificationIcon = require('@/assets/home/notification.png');
-const expenseHistoryIcon = require('@/assets/home/expense-history.png');
 
 type HomeHeaderProps = {
   userName?: string;
@@ -104,13 +103,15 @@ export function HomeHeader({
         </Pressable>
 
         <Pressable
-          style={({ pressed }) => [styles.expenseHistoryButton, pressed && styles.pressed]}
+          style={({ pressed }) => [styles.addExpenseButton, pressed && styles.pressed]}
           onPress={onExpenseHistory}
           accessibilityRole="button"
-          accessibilityLabel="Expense history"
+          accessibilityLabel="Add expense"
         >
-          <Image source={expenseHistoryIcon} style={styles.expenseHistoryIcon} resizeMode="contain" />
-          <Text style={styles.expenseHistoryLabel}>Expense history</Text>
+          <View style={styles.plusCircleLight}>
+            <Ionicons name="add" size={16} color="#FFFFFF" />
+          </View>
+          <Text style={styles.addExpenseLabel}>Add Expense</Text>
         </Pressable>
       </View>
 

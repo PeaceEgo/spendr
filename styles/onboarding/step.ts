@@ -14,17 +14,17 @@ export const onboardingStepStyles = StyleSheet.create({
   },
   progressRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 8,
     marginTop: 12,
   },
   progressBar: {
-    width: 85.75,
+    flex: 1,
     height: 9,
     borderRadius: 100,
-    backgroundColor: '#D9E0F1',
+    backgroundColor: Colors.onboarding.stepProgressInactive,
   },
   progressBarActive: {
-    backgroundColor: '#35529A',
+    backgroundColor: Colors.onboarding.stepProgressActive,
   },
   topBack: {
     flexDirection: 'row',

@@ -94,6 +94,9 @@ export const homeBudgetLayout = {
   statusBarPaddingHorizontal: 10,
 } as const;
 
+/** Budgets tab — one card per page (Figma pagination). */
+export const BUDGETS_TAB_PAGE_SIZE = 1;
+
 export function getBudgetLimitStatus(spent: number, limit: number): BudgetLimitStatus {
   if (limit <= 0) return 'within_limit';
   const ratio = spent / limit;

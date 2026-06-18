@@ -157,26 +157,31 @@ export const homeHeaderStyles = StyleSheet.create({
     fontWeight: '700',
     color: '#121926',
   },
-  expenseHistoryButton: {
+  addExpenseButton: {
     flex: 1,
     maxWidth: homeLayout.headerButtonWidth,
     height: homeLayout.headerButtonHeight,
     borderRadius: 50,
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: homeColors.headerBlue,
+    backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: homeColors.expenseHistoryBorder,
+    borderColor: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 12,
   },
-  expenseHistoryIcon: {
-    width: 18,
-    height: 18,
+  plusCircleLight: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 1.5,
+    borderColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  expenseHistoryLabel: {
+  addExpenseLabel: {
     fontFamily: fonts.cabinBold,
     fontSize: 14,
     lineHeight: 22.4,

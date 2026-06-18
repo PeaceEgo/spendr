@@ -206,8 +206,8 @@ export const budgetsTabStyles = StyleSheet.create({
   },
   allBudgetsTitle: {
     fontFamily: fonts.cabinBold,
-    fontSize: 36,
-    lineHeight: 43.2,
+    fontSize: 16,
+    lineHeight: 25.6,
     color: '#121926',
   },
   filterPill: {

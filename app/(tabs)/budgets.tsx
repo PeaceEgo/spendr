@@ -2,14 +2,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState, useEffect } from 'react';
 import { Image, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 
 import { ActiveBudgetCard } from '@/components/home/ActiveBudgetCard';
+import { BudgetListPagination } from '@/components/budget/BudgetListPagination';
 import { HomeEmptyState } from '@/components/home/HomeEmptyState';
 import {
+  BUDGETS_TAB_PAGE_SIZE,
   BUDGET_TAB_HEADER_GRADIENT_BASE,
   BUDGET_TAB_HEADER_GRADIENT_LEFT,
   BUDGET_TAB_HEADER_GRADIENT_RIGHT,
@@ -40,6 +42,7 @@ export default function BudgetsTabScreen() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
   const [filter, setFilter] = useState<FilterOption>('all');
+  const [page, setPage] = useState(1);
   const [filterMenuTop, setFilterMenuTop] = useState(0);
   const filterAnchorRef = useRef<View>(null);
 
@@ -59,6 +62,23 @@ export default function BudgetsTabScreen() {
       return ratio > 1;
     });
   }, [budgets, filter]);
+
+  const totalPages = Math.max(1, Math.ceil(visibleBudgets.length / BUDGETS_TAB_PAGE_SIZE));
+
+  const paginatedBudgets = useMemo(() => {
+    const start = (page - 1) * BUDGETS_TAB_PAGE_SIZE;
+    return visibleBudgets.slice(start, start + BUDGETS_TAB_PAGE_SIZE);
+  }, [visibleBudgets, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [filter]);
+
+  useEffect(() => {
+    if (page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [page, totalPages]);
 
   const openCreateBudget = () => {
     resetDraft();
@@ -194,11 +214,20 @@ export default function BudgetsTabScreen() {
           </View>
 
           {visibleBudgets.length > 0 ? (
-            <View style={styles.list}>
-              {visibleBudgets.map((budget) => (
-                <ActiveBudgetCard key={budget.id} budget={budget} />
-              ))}
-            </View>
+            <>
+              <View style={styles.list}>
+                {paginatedBudgets.map((budget) => (
+                  <ActiveBudgetCard key={budget.id} budget={budget} />
+                ))}
+              </View>
+              {totalPages > 1 ? (
+                <BudgetListPagination
+                  currentPage={page}
+                  totalPages={totalPages}
+                  onPageChange={setPage}
+                />
+              ) : null}
+            </>
           ) : (
             <HomeEmptyState onCreateBudget={openCreateBudget} />
           )}

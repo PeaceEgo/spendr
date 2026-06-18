@@ -2,6 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Image, Text, View, type ImageSourcePropType } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { StackedCardsDecor } from '@/components/shared/StackedCardsDecor';
 import { INTRO_SLIDE2_CARD_TOP, slide2Styles as styles } from '@/styles/intro/slide-2';
 
 const feedingIcon = require('@/assets/intro/feeding.png') as ImageSourcePropType;
@@ -19,9 +20,7 @@ export function BudgetMockup() {
         end={{ x: 1, y: 1 }}
         style={styles.mainCard}
       >
-        <View style={styles.cornerCardLarge} />
-        <View style={styles.cornerCardMid} />
-        <View style={styles.cornerCardSmall} />
+        <StackedCardsDecor variant="introSlide2" />
         <Text style={styles.safeLabel}>Safe to spend today</Text>
         <Text style={styles.safeAmount}>₦120,000</Text>
         <View style={styles.progressTrack}>

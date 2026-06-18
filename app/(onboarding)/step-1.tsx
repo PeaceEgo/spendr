@@ -63,18 +63,30 @@ export default function OnboardingStep1() {
           return (
             <Pressable
               key={item.id}
-              style={[styles.issueCard, isSelected && styles.issueCardSelected]}
+              style={[styles.issueCard, isSelected && styles.cardSelected]}
               onPress={() => toggle(item.id)}
             >
-              <View style={styles.issueIconBadge}>
+              <View style={[styles.issueIconBadge, isSelected && styles.iconBadgeSelected]}>
                 {item.iconType === 'image' ? (
-                  <Image source={{ uri: item.icon }} style={styles.issueIconImage} resizeMode="contain" />
+                  <Image
+                    source={{ uri: item.icon }}
+                    style={[styles.issueIconImage, isSelected && styles.iconImageSelected]}
+                    resizeMode="contain"
+                  />
                 ) : (
-                  <MaterialCommunityIcons name={item.icon} size={24} color="#15213E" />
+                  <MaterialCommunityIcons
+                    name={item.icon}
+                    size={24}
+                    color={isSelected ? '#FFFFFF' : '#15213E'}
+                  />
                 )}
               </View>
-              <Text style={styles.issueTitle}>{item.title}</Text>
-              <Text style={styles.issueDesc}>{item.description}</Text>
+              <Text style={[styles.issueTitle, isSelected && styles.cardTitleSelected]}>
+                {item.title}
+              </Text>
+              <Text style={[styles.issueDesc, isSelected && styles.cardDescSelected]}>
+                {item.description}
+              </Text>
             </Pressable>
           );
         })}

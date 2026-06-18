@@ -30,11 +30,19 @@ export default function OnboardingStep3() {
           {options.map((item) => (
             <Pressable
               key={item.id}
-              style={[styles.incomeCard, selected === item.id && styles.incomeCardSelected]}
+              style={[styles.incomeCard, selected === item.id && styles.cardSelected]}
               onPress={() => setSelected(item.id)}
             >
-              <Text style={styles.incomeTitle}>{item.title}</Text>
-              <Text style={styles.incomeSub}>{item.subtitle}</Text>
+              <Text
+                style={[styles.incomeTitle, selected === item.id && styles.cardTitleSelected]}
+              >
+                {item.title}
+              </Text>
+              <Text
+                style={[styles.incomeSub, selected === item.id && styles.cardDescSelected]}
+              >
+                {item.subtitle}
+              </Text>
             </Pressable>
           ))}
         </View>

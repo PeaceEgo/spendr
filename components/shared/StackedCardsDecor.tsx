@@ -1,10 +1,14 @@
 import { Image, StyleSheet, useWindowDimensions, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { budgetFlowLayout } from '@/constants/budget-flow';
-import { stackedCardsImage, stackedCardsLayout } from '@/constants/stacked-cards';
+import {
+  introSlide2StackedCardsImage,
+  stackedCardsImage,
+  stackedCardsLayout,
+} from '@/constants/stacked-cards';
 
 type StackedCardsDecorProps = {
-  variant: 'home' | 'budgetReview';
+  variant: 'home' | 'budgetReview' | 'introSlide2';
   style?: StyleProp<ViewStyle>;
 };
 
@@ -20,16 +24,26 @@ export function StackedCardsDecor({ variant, style }: StackedCardsDecorProps) {
         );
   const scale = frameWidth / placement.frameWidth;
 
-  const scaledStyle = {
-    top: placement.top * scale,
-    right: placement.right * scale,
-    width: placement.width * scale,
-    height: placement.height * scale,
-  };
+  const scaledStyle =
+    'left' in placement
+      ? {
+          top: placement.top * scale,
+          left: placement.left * scale,
+          width: placement.width * scale,
+          height: placement.height * scale,
+        }
+      : {
+          top: placement.top * scale,
+          right: placement.right * scale,
+          width: placement.width * scale,
+          height: placement.height * scale,
+        };
+
+  const source = variant === 'introSlide2' ? introSlide2StackedCardsImage : stackedCardsImage;
 
   return (
     <View style={[styles.root, scaledStyle, style]} pointerEvents="none">
-      <Image source={stackedCardsImage} style={styles.image} resizeMode="contain" />
+      <Image source={source} style={styles.image} resizeMode="contain" />
     </View>
   );
 }

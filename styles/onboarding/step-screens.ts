@@ -33,20 +33,16 @@ export const onboardingScreenStyles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingBottom: 16,
   },
-  issueCardSelected: {
-    borderColor: '#4062B9',
-    borderWidth: 2,
-  },
   issueIconBadge: {
     width: 36,
-    height: 36,
+    height: 32,
     borderRadius: 8,
     backgroundColor: '#F2F2F2',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 8,
     paddingTop: 5,
-    paddingRight: 5,
+    paddingRight: 7,
     paddingBottom: 3,
     paddingLeft: 8,
   },
@@ -125,10 +121,6 @@ export const onboardingScreenStyles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingBottom: 10,
   },
-  incomeCardSelected: {
-    borderColor: '#4062B9',
-    borderWidth: 2,
-  },
   incomeTitle: {
     fontFamily: fonts.cabinBold,
     fontSize: 16,
@@ -178,10 +170,6 @@ export const onboardingScreenStyles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#F2F2F2',
     gap: 16,
-  },
-  thresholdCardSelected: {
-    borderColor: '#4062B9',
-    borderWidth: 2,
   },
   thresholdHeader: {
     flexDirection: 'row',
@@ -299,8 +287,21 @@ export const onboardingScreenStyles = StyleSheet.create({
     fontWeight: '400',
     color: '#15213E',
   },
-  selectedCard: {
-    borderColor: '#4062B9',
-    borderWidth: 2,
+  cardSelected: {
+    backgroundColor: Colors.onboarding.cardSelectedBg,
+    borderColor: Colors.onboarding.cardSelectedBorder,
+    borderWidth: 1,
+  },
+  cardTitleSelected: {
+    color: Colors.onboarding.cardSelectedText,
+  },
+  cardDescSelected: {
+    color: Colors.onboarding.cardSelectedText,
+  },
+  iconBadgeSelected: {
+    backgroundColor: Colors.onboarding.iconBadgeSelectedBg,
+  },
+  iconImageSelected: {
+    tintColor: '#FFFFFF',
   },
 });

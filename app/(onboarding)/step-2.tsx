@@ -70,14 +70,22 @@ export default function OnboardingStep2() {
           return (
             <Pressable
               key={item.id}
-              style={[styles.categoryCard, isSelected && styles.selectedCard]}
+              style={[styles.categoryCard, isSelected && styles.cardSelected]}
               onPress={() => toggle(item.id)}
             >
-              <View style={styles.issueIconBadge}>
-                <Image source={{ uri: item.icon }} style={styles.categoryIconImage} resizeMode="contain" />
+              <View style={[styles.issueIconBadge, isSelected && styles.iconBadgeSelected]}>
+                <Image
+                  source={{ uri: item.icon }}
+                  style={[styles.categoryIconImage, isSelected && styles.iconImageSelected]}
+                  resizeMode="contain"
+                />
               </View>
-              <Text style={styles.categoryTitle}>{item.title}</Text>
-              <Text style={styles.categoryDesc}>{item.desc}</Text>
+              <Text style={[styles.categoryTitle, isSelected && styles.cardTitleSelected]}>
+                {item.title}
+              </Text>
+              <Text style={[styles.categoryDesc, isSelected && styles.cardDescSelected]}>
+                {item.desc}
+              </Text>
             </Pressable>
           );
         })}

@@ -152,6 +152,16 @@ export const Colors = {
     skipOnWhite: palette.text[400],
   },
 
+  /** Onboarding steps 1–4 */
+  onboarding: {
+    stepProgressActive: '#4062B9',
+    stepProgressInactive: '#D9E0F1',
+    cardSelectedBg: '#BF955B',
+    cardSelectedBorder: '#BF955B',
+    cardSelectedText: '#FFFFFF',
+    iconBadgeSelectedBg: '#997749',
+  },
+
   /** Auth — Create Account / Sign in */
   auth: {
     title: '#15213E',
